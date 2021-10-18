@@ -1,0 +1,27 @@
+<div class="rss-feed-fixed bg-dark ">
+    <img src="https://ik.imagekit.io/otlpjobh3qa/rss-iconpng_3687mpj-Q?updatedAt=1634016161035" class="img-fluid"
+        alt="rss-icon">
+
+    <ng-template #template class="preview">
+        <div class="modal-header bg-dark">
+            <button type="button" class="btn-close text-light close pull-right" aria-label="Close"
+                (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" [src]="iframeUrl"></iframe>
+            </div>
+        </div>
+    </ng-template>
+    <div *ngFor="let item of RssData?.rss!.channel[0].item;">
+        <div class="display-5 text-light">{{item.title}}</div>
+        <span type="button" class="badge bg-light" (click)="openModal(template, item.link[0])">View</span>
+        <div class="box">
+            <div class="box-sm red"></div>
+            <div class="box-sm orange"></div>
+            <div class="box-sm yellow "></div>
+        </div>
+    </div>
+</div>
